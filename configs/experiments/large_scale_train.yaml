@@ -121,7 +121,3 @@ checkpointing:
 lr_scheduler:
   num_warmup_steps: 10000
   num_training_steps: 100000
-  #_target_: torch.optim.lr_scheduler.CosineAnnealingWarmRestarts
-  #T_0: 10000           # 第一个周期长度（step）
-  #T_mult: 2            # 每次周期翻倍
-  #eta_min: 1e-9        # 最低学习率
