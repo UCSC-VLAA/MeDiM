@@ -17,7 +17,7 @@ Step2. Prepare mimic-cxr dataset and PathGen dataset in Huggingface, run:
 ```bash
 # downloading mimic-cxr from Huggingface
 huggingface-cli login
-huggingface-cli snapshot download MLforHealthcare/mimic-cxr --local-dir ./dataset/mimic-cxr --local-dir-use-symlinks False
+huggingface-cli snapshot download jamessyx/PathGen --local-dir ./dataset/pathgen --local-dir-use-symlinks False
 ```
 
 Step3. Prepare pretrain checkpoint, run:
@@ -41,7 +41,7 @@ Step4. Fixing `num_hidden_layers: 10` of `config.json` in ./models/Liquid_V1_7B.
 Step5. MedUnidisc training, run:
 ```bash
 # training
-accelerate launch  --num_processes 8 --multi_gpu --main_process_port=$RANDOM main.py +experiments='[large_scale_train]' debug=true loader.batch_size=1 data.data_dir_train=./dataset/mimic-cxr/data data.data_dir_val=./dataset/mimic-cxr/data model.vqgan_config=./models/chameleon/vqgan.yaml model.vqgan_ckpt=./models/vqgan_ckpt model.llama_ckpt=./models/Llama-2-7b-hf model.liquid_ckpt=./models/Liquid_V1_7B
+accelerate launch  --num_processes 8 --multi_gpu --main_process_port=$RANDOM main.py +experiments='[large_scale_train]' debug=true loader.batch_size=1 data_path_dir_train=./dataset/pathgen/train data_path_dir_val=./dataset/pathgen/test data_mimic_dir_train=./dataset/mimic-cxr/data data_mimic_dir_val=./dataset/mimic-cxr/test model.vqgan_config=./models/chameleon/vqgan.yaml model.vqgan_ckpt=./models/vqgan_ckpt model.llama_ckpt=./models/Llama-2-7b-hf model.liquid_ckpt=./models/Liquid_V1_7B
 ```
 
 Step6. Find the latest ckpt path, run:
@@ -53,6 +53,6 @@ python find_latest_ckpt.py ./medunidisc/outputs/outputs/debug
 Step7. Resume MedUnidisc training, run:
 ```bash
 # resume
-accelerate launch  --num_processes 8 --multi_gpu --main_process_port=$RANDOM main.py +experiments='[large_scale_train]' debug=true loader.batch_size=1 data.data_dir_train=./dataset/mimic-cxr/data data.data_dir_val=./dataset/mimic-cxr/data model.vqgan_config=./models/chameleon/vqgan.yaml model.vqgan_ckpt=./models/vqgan_ckpt model.llama_ckpt=./models/Llama-2-7b-hf model.liquid_ckpt=./models/Liquid_V1_7B
+accelerate launch  --num_processes 8 --multi_gpu --main_process_port=$RANDOM main.py +experiments='[large_scale_train]' debug=true loader.batch_size=1 data_path_dir_train=./dataset/pathgen/train data_path_dir_val=./dataset/pathgen/test data_mimic_dir_train=./dataset/mimic-cxr/data data_mimic_dir_val=./dataset/mimic-cxr/test model.vqgan_config=./models/chameleon/vqgan.yaml model.vqgan_ckpt=./models/vqgan_ckpt model.llama_ckpt=./models/Llama-2-7b-hf model.liquid_ckpt=./models/Liquid_V1_7B
 ```
 
