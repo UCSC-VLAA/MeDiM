@@ -30,7 +30,7 @@ def find_latest_checkpoint(root_dir):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="查找最新 checkpoint")
-    parser.add_argument("root", type=str, help="根目录路径，例如 /opt/dlami/nvme/mjw/code/medunidisc/outputs/outputs/debug")
+    parser.add_argument("root", type=str, help="root folder, eg. ./outputs/outputs/debug")
     args = parser.parse_args()
 
     latest_ckpt = find_latest_checkpoint(args.root)
