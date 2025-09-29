@@ -6,7 +6,7 @@
 <span>
 <a href="https://arxiv.org/abs/2504.06897"><img src="https://img.shields.io/badge/arXiv-2504.06897-b31b1b.svg" height=22.5></a>
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" height=22.5></a>  
-<a href="https://jwmao1.github.io/MeDiM_web/"><img src="https://img.shields.io/badge/project-MedSegFactory-purple.svg" height=22.5></a>
+<a href="https://jwmao1.github.io/MeDiM_web/"><img src="https://img.shields.io/badge/project-MeDiM-purple.svg" height=22.5></a>
 <a href="https://huggingface.co/spaces/JohnWeck/medsegfactory"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-blue" height=22.5></a>
 </span>
 
