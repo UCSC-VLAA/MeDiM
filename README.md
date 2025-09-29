@@ -86,3 +86,23 @@ Step6. Resume MedUnidisc training, run:
 accelerate launch  --num_processes 8 --multi_gpu --main_process_port=$RANDOM main.py +experiments='[large_scale_train]' debug=true loader.batch_size=1 data_path_dir_train=./dataset/pathgen/train data_path_dir_val=./dataset/pathgen/test data_mimic_dir_train=./dataset/mimic-cxr/data data_mimic_dir_val=./dataset/mimic-cxr/test model.vqgan_config=./models/chameleon/vqgan.yaml model.vqgan_ckpt=./models/vqgan_ckpt model.llama_ckpt=./models/Llama-2-7b-hf model.liquid_ckpt=./models/Liquid_V1_7B
 ```
 
+## 🙏 Acknowledgement
+
+Deeply appreciate these wonderful open source projects: [unidisc](https://github.com/alexanderswerdlow/unidisc), [pathgen-1.6m](https://github.com/PathFoundation/PathGen-1.6M), [mimic-cxr](https://physionet.org/content/mimic-cxr/2.0.0/).
+
+## 🩺 Citation 
+
+If you find this repository useful, please consider giving a star ⭐ and citation 💓:
+
+```
+@misc{mao2025medsegfactorytextguidedgenerationmedical,
+      title={MedSegFactory: Text-Guided Generation of Medical Image-Mask Pairs}, 
+      author={Jiawei Mao and Yuhan Wang and Yucheng Tang and Daguang Xu and Kang Wang and Yang Yang and Zongwei Zhou and Yuyin Zhou},
+      year={2025},
+      eprint={2504.06897},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2504.06897}, 
+}
+```
+
