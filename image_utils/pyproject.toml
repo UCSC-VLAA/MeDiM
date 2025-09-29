@@ -1,0 +1,75 @@
+[project]
+name = "image_utilities"
+version = "0.0.3"
+authors = [{ name="Alexander Swerdlow", email="aswerdlow1@gmail.com" }]
+description = "A utility library for common image and video operations."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "numpy>=1.17",
+    "pillow>=8.0.0",
+    "einops>=0.3.0",
+    "jaxtyping>=0.2.19",
+]
+
+[project.urls]
+Homepage = "https://github.com/alexanderswerdlow/image_utils"
+
+[project.optional-dependencies]
+video = ["av>=10.0.0", "imageio[ffmpeg]>=2.23.0"]
+dev = ["pytest", "pytest-cov", "black", "lovely-numpy>=0.2.8", "opencv-python", "joblib>=1.2.0"]
+cpu = ["torch", "torchvision", "lovely-tensors"]
+cu118 = ["torch", "torchvision", "lovely-tensors"]
+cu124 = ["torch", "torchvision", "lovely-tensors"]
+
+[tool.uv]
+conflicts = [
+  [
+    { extra = "cpu" },
+    { extra = "cu118" },
+    { extra = "cu124" },
+  ],
+]
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cpu", extra = "cpu" },
+  { index = "pytorch-cu118", extra = "cu118" },
+  { index = "pytorch-cu124", extra = "cu124" },
+]
+torchvision = [
+  { index = "pytorch-cpu", extra = "cpu" },
+  { index = "pytorch-cu118", extra = "cu118" },
+  { index = "pytorch-cu124", extra = "cu124" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu118"
+url = "https://download.pytorch.org/whl/cu118"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu124"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/image_utils", "src/im"]
+
+[tool.black]
+line-length = 150
+target-version = ['py310']
