@@ -1,19 +1,19 @@
-# MedUnidisc
+# MedDiM
 
 ## Getting Started
 
 Step1. To install the dependencies, run:
 ```bash
 # create new anaconda env
-conda create -n MedUni python=3.10
-conda activate MedUni 
+conda create -n MedDiM python=3.10
+conda activate MedDiM 
 
 # install packages
 pip install -r requirements.txt
 pip install torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0 --index-url https://download.pytorch.org/whl/cu128
 ```
 
-Step2. Prepare mimic-cxr dataset in Huggingface, run:
+Step2. Prepare mimic-cxr dataset and PathGen dataset in Huggingface, run:
 ```bash
 # downloading mimic-cxr from Huggingface
 huggingface-cli login
@@ -56,9 +56,3 @@ Step7. Resume MedUnidisc training, run:
 accelerate launch  --num_processes 8 --multi_gpu --main_process_port=$RANDOM main.py +experiments='[large_scale_train]' debug=true loader.batch_size=1 data.data_dir_train=./dataset/mimic-cxr/data data.data_dir_val=./dataset/mimic-cxr/data model.vqgan_config=./models/chameleon/vqgan.yaml model.vqgan_ckpt=./models/vqgan_ckpt model.llama_ckpt=./models/Llama-2-7b-hf model.liquid_ckpt=./models/Liquid_V1_7B
 ```
 
-Step. Auto MedUnidisc training, Open `train.sh` and set your custom absolute paths for datasets, checkpoints, and outputs. run:
-```bash
-# auto training
-chmod +x train.sh
-./train.sh
-```
