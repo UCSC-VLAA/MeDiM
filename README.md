@@ -13,7 +13,7 @@ Code for the paper [Discrete Diffusion Models with MLLMs for Unified Medical Mul
 
 ### About this repo:
 
-The repository contains the official implementation of "MeDiM".
+The repository contains the official implementation of "MeDiM", and it is still under development.
 
 ## 🏥 Introduction 
 
