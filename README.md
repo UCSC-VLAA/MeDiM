@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./docs/logo.png" height=150>
+  <img src="./docs/logo.jpg" height=150>
 </p>
 
 # Discrete Diffusion Models with MLLMs for Unified Medical Multimodal Generation
@@ -35,7 +35,7 @@ The repository contains the official implementation of "MeDiM".
 > **Overview of the MeDiM architecture.** The framework integrates an MLLM backbone within a discrete diffusion process for unified medical multimodal generation. During the forward process, data is tokenized and diffused over timesteps. The MLLM is then trained to reverse this process. Key architectural adaptations, including causal attention removal, timestep embeddings, and AdaLN, adapt the autoregressive MLLM for the bidirectional denoising required for unified medical generation.
 <br>
 
-<img src="./docs/images/framework.jpg" width="950"/>
+<img src="./docs/framework.jpg" width="950"/>
 
 ## Getting Started
 
