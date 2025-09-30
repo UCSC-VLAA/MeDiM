@@ -244,7 +244,7 @@ class Diffusion:
         txt_token, img_token = x[:,:256], x[:,256:]
         bsz = x.shape[0]
 
-        attn_txt_mask, attn_img_mask = batch['mask'], batch['img_mask']
+        attn_img_mask = batch['img_mask']
         c_bsz = batch['boi'].shape[0]
 
         if bsz != c_bsz:
@@ -254,7 +254,6 @@ class Diffusion:
             attn_one_token = torch.ones_like(batch['boi'].repeat(bsz,1))
             attn_one_tokens = torch.ones_like(batch['cond'].repeat(bsz,1))
             attn_img_mask = attn_img_mask.repeat(bsz,1)
-            attn_txt_mask = attn_txt_mask.repeat(bsz,1)
         else:
             input_ids = torch.cat(
                 [batch['boi'], img_token, batch['eoi'], batch['cond'],
@@ -262,7 +261,8 @@ class Diffusion:
             attn_one_token = torch.ones_like(batch['boi'])
             attn_one_tokens = torch.ones_like(batch['cond'])
 
-        attention_mask = torch.cat([attn_one_token, attn_img_mask, attn_one_token, attn_one_tokens, attn_txt_mask, attn_one_token], dim=-1)
+        txt_attn_mask = torch.ones_like(txt_token).to(txt_token.device)
+        attention_mask = torch.cat([attn_one_token, attn_img_mask, attn_one_token, attn_one_tokens, txt_attn_mask, attn_one_token], dim=-1)
 
         should_autocast = (((self.config.trainer.disable_forward_autocast_during_eval and self.backbone.training) is False) and (self.dtype != torch.float32))
         with ExitStack() as stack:
