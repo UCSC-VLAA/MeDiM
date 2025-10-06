@@ -84,7 +84,7 @@ We need to make sure `MIMIC-CXR` and `PathGen` have a structure like following:
        TCGA-05-4244-01Z-00-DX1.d4ff32cd-38cf-40ea-8213-45c2b100ac01_21088_18976.png
        TCGA-05-4244-01Z-00-DX1.d4ff32cd-38cf-40ea-8213-45c2b100ac01_21088_18976.txt
        ...
-		 ./dataset/mimic-cxr/data/
+	 ./dataset/mimic-cxr/data/
        p10_p10000032_s50414267_02aa804e-bde0afdd-112c0b34-7bc16630-4e384014.jpg
        p10_p10000032_s50414267_02aa804e-bde0afdd-112c0b34-7bc16630-4e384014.txt
        ...
