@@ -67,19 +67,46 @@ huggingface-cli snapshot download NousResearch/Llama-2-7b-hf --local-dir ./model
 
 Step3. Fixing `num_hidden_layers: 10` of `config.json` in ./models/Liquid_V1_7B.
 
-Step4. MedUnidisc training, run:
+Step4. Prepare pretrain checkpoint, run:
+
+For `MIMIC-CXR`, you can download the dataset from [here](https://drive.google.com/file/d/1DS6NYirOXQf8qYieSVMvqNwuOlgAbM_E/view?usp=sharing) with your license of [PhysioNet](https://physionet.org/content/mimic-cxr-jpg/2.0.0/).
+
+For `PathGen`, you can download the dataset from [here](https://huggingface.co/datasets/jamessyx/PathGen), and you need to follow our [pathgen setting](https://huggingface.co/datasets/JiaMao/pathgen) to split this dataset.
+
+We need to make sure `MIMIC-CXR` and `PathGen` have a structure like following:
+
+	```
+	- ./dataset/pathgen/train
+       TCGA-05-4244-01Z-00-DX1.d4ff32cd-38cf-40ea-8213-45c2b100ac01_10336_14272.png
+       TCGA-05-4244-01Z-00-DX1.d4ff32cd-38cf-40ea-8213-45c2b100ac01_10336_14272.txt
+       ...
+     ./dataset/pathgen/test
+       TCGA-05-4244-01Z-00-DX1.d4ff32cd-38cf-40ea-8213-45c2b100ac01_21088_18976.png
+       TCGA-05-4244-01Z-00-DX1.d4ff32cd-38cf-40ea-8213-45c2b100ac01_21088_18976.txt
+       ...
+		 ./dataset/mimic-cxr/data/
+       p10_p10000032_s50414267_02aa804e-bde0afdd-112c0b34-7bc16630-4e384014.jpg
+       p10_p10000032_s50414267_02aa804e-bde0afdd-112c0b34-7bc16630-4e384014.txt
+       ...
+     ./dataset/mimic-cxr/test/
+       p10_p10032725_s50331901_687754ce-7420bfd3-0a19911f-a27a3916-9019cd53.jpg
+       p10_p10032725_s50331901_687754ce-7420bfd3-0a19911f-a27a3916-9019cd53.txt
+       ...
+	```
+
+Step5. MedUnidisc training, run:
 ```bash
 # training
 accelerate launch  --num_processes 8 --multi_gpu --main_process_port=$RANDOM main.py +experiments='[large_scale_train]' debug=true loader.batch_size=1 data_path_dir_train=./dataset/pathgen/train data_path_dir_val=./dataset/pathgen/test data_mimic_dir_train=./dataset/mimic-cxr/data data_mimic_dir_val=./dataset/mimic-cxr/test model.vqgan_config=./models/chameleon/vqgan.yaml model.vqgan_ckpt=./models/vqgan_ckpt model.llama_ckpt=./models/Llama-2-7b-hf model.liquid_ckpt=./models/Liquid_V1_7B
 ```
 
-Step5. Find the latest ckpt path, run:
+Step6. Find the latest ckpt path, run:
 ```bash
 # find ckpt path
 python find_latest_ckpt.py ./medunidisc/outputs/outputs/debug
 ```
 
-Step6. Resume MedUnidisc training, run:
+Step7. Resume MedUnidisc training, run:
 ```bash
 # resume
 accelerate launch  --num_processes 8 --multi_gpu --main_process_port=$RANDOM main.py +experiments='[large_scale_train]' debug=true loader.batch_size=1 data_path_dir_train=./dataset/pathgen/train data_path_dir_val=./dataset/pathgen/test data_mimic_dir_train=./dataset/mimic-cxr/data data_mimic_dir_val=./dataset/mimic-cxr/test model.vqgan_config=./models/chameleon/vqgan.yaml model.vqgan_ckpt=./models/vqgan_ckpt model.llama_ckpt=./models/Llama-2-7b-hf model.liquid_ckpt=./models/Liquid_V1_7B
