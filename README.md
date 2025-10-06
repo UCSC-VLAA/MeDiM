@@ -25,7 +25,7 @@ The repository contains the official implementation of "MeDiM", and it is still 
 ## 🔥 News/TODO
 - [x] [Paper](https://arxiv.org/abs/2504.06897) is released on ArXiv.
 - [x] Training code.
-- [ ] Dataset upload.
+- [x] Dataset upload.
 - [ ] Pretrained weight of MeDiM.
 - [ ] Inference code.
 
