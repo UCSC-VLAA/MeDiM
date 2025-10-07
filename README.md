@@ -26,7 +26,7 @@ The repository contains the official implementation of "MeDiM", and it is still 
 - [x] [Paper](https://arxiv.org/abs/2504.06897) is released on ArXiv.
 - [x] Training code.
 - [x] Dataset upload.
-- [ ] Pretrained weight of MeDiM.
+- [x] [Pretrained weight](https://huggingface.co/JiaMao/medim_ckpts) of MeDiM.
 - [ ] Inference code.
 
 ## 🧑‍⚕️ Framework 
