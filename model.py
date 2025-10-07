@@ -261,8 +261,8 @@ class Diffusion:
             attn_one_token = torch.ones_like(batch['boi'])
             attn_one_tokens = torch.ones_like(batch['cond'])
 
-        txt_attn_mask = torch.ones_like(txt_token).to(txt_token.device)
-        attention_mask = torch.cat([attn_one_token, attn_img_mask, attn_one_token, attn_one_tokens, txt_attn_mask, attn_one_token], dim=-1)
+        attention_mask = torch.cat([attn_one_token, attn_img_mask, attn_one_token, attn_one_tokens, txt_token, attn_one_token], dim=-1)
+        # update_causal_mask will convert the txt_token tensor into a binary (0/1) attention mask
 
         should_autocast = (((self.config.trainer.disable_forward_autocast_during_eval and self.backbone.training) is False) and (self.dtype != torch.float32))
         with ExitStack() as stack:
