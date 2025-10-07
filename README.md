@@ -27,7 +27,6 @@ The repository contains the official implementation of "MeDiM", and it is still 
 - [x] Training code.
 - [x] Dataset upload.
 - [x] [Pretrained weight](https://huggingface.co/JiaMao/medim_ckpts) of MeDiM.
-- [ ] Inference code.
 
 ## 🧑‍⚕️ Framework 
 
