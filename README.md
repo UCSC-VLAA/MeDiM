@@ -4,12 +4,12 @@
 
 # Discrete Diffusion Models with MLLMs for Unified Medical Multimodal Generation
 <span>
-<a href="https://arxiv.org/abs/2504.06897"><img src="https://img.shields.io/badge/arXiv-2504.06897-b31b1b.svg" height=22.5></a>
+<a href="https://arxiv.org/abs/2510.06131"><img src="https://img.shields.io/badge/arXiv-2510.06131-b31b1b.svg" height=22.5></a>
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" height=22.5></a>  
 <a href="https://jwmao1.github.io/MeDiM_web/"><img src="https://img.shields.io/badge/project-MeDiM-purple.svg" height=22.5></a>
 </span>
 
-Code for the paper [Discrete Diffusion Models with MLLMs for Unified Medical Multimodal Generation](https://arxiv.org/abs/2504.06897) will be available soon. 
+Code for the paper [Discrete Diffusion Models with MLLMs for Unified Medical Multimodal Generation](https://arxiv.org/abs/2510.06131) will be available soon. 
 
 ### About this repo:
 
@@ -23,7 +23,7 @@ The repository contains the official implementation of "MeDiM", and it is still 
 <img src="./docs/teaser.jpg" width="950"/>
 
 ## 🔥 News/TODO
-- [x] [Paper](https://arxiv.org/abs/2504.06897) is released on ArXiv.
+- [x] [Paper](https://arxiv.org/abs/2510.06131) is released on ArXiv.
 - [x] Training code.
 - [x] Dataset upload.
 - [x] [Pretrained weight](https://huggingface.co/JiaMao/medim_ckpts) of MeDiM.
@@ -120,14 +120,14 @@ Deeply appreciate these wonderful open source projects: [unidisc](https://github
 If you find this repository useful, please consider giving a star ⭐ and citation 💓:
 
 ```
-@misc{mao2025medsegfactorytextguidedgenerationmedical,
-      title={MedSegFactory: Text-Guided Generation of Medical Image-Mask Pairs}, 
-      author={Jiawei Mao and Yuhan Wang and Yucheng Tang and Daguang Xu and Kang Wang and Yang Yang and Zongwei Zhou and Yuyin Zhou},
+@misc{mao2025discretediffusionmodelsmllms,
+      title={Discrete Diffusion Models with MLLMs for Unified Medical Multimodal Generation}, 
+      author={Jiawei Mao and Yuhan Wang and Lifeng Chen and Can Zhao and Yucheng Tang and Dong Yang and Liangqiong Qu and Daguang Xu and Yuyin Zhou},
       year={2025},
-      eprint={2504.06897},
+      eprint={2510.06131},
       archivePrefix={arXiv},
       primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2504.06897}, 
+      url={https://arxiv.org/abs/2510.06131}, 
 }
 ```
 
