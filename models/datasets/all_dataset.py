@@ -29,8 +29,8 @@ class TrainDataset(torch.utils.data.Dataset):
         self.all_images = []
         self.data_sources = []
 
-        path_images = glob.glob(os.path.join(self.path_data_dir, '*.png'))[100000:200000]
-        mimic_images = glob.glob(os.path.join(self.mimic_data_dir, '*.jpg'))[100000:200000]
+        path_images = glob.glob(os.path.join(self.path_data_dir, '*.png'))
+        mimic_images = glob.glob(os.path.join(self.mimic_data_dir, '*.jpg'))
 
         self.all_images.extend(path_images)
         self.data_sources.extend(['pathgen'] * len(path_images))
