@@ -16,8 +16,8 @@ from constants import UNIDISC_DIR
 from data_defs import InterleavedBatch
 import einops
 import numpy as np
-from unidisc.utils.simple_llm import get_llm
-from unidisc.utils.viz_utils import augment_image_with_random_object_coco, create_text_image
+from medim.utils.simple_llm import get_llm
+from medim.utils.viz_utils import augment_image_with_random_object_coco, create_text_image
 import torch
 import torch.utils.checkpoint
 from accelerate.utils import gather, gather_object
@@ -34,10 +34,10 @@ import wandb
 from decoupled_utils import (barrier, dprint, get_num_gpus, get_rank, get_world_size,
                              gprint, is_main_process, print_memory_summary,
                              rprint, save_memory_profile, show_memory_usage, try_except, sanitize_filename)
-from unidisc.tokenizers.chameleon_tokenizers import (decode_ids_batched,
+from medim.tokenizers.chameleon_tokenizers import (decode_ids_batched,
                                                   get_chameleon_images)
-from unidisc.tokenizers.image_tokenizers import decode_latents, get_image_batch
-from unidisc.utils.throughput_monitor import get_available_flops
+from medim.tokenizers.image_tokenizers import decode_latents, get_image_batch
+from medim.utils.throughput_monitor import get_available_flops
 from model_utils import (_sample_categorical, empty_device_cache, get_chameleon_txt_indices, get_interleaved_block_mask, log,
                          remap_image_torch, replace_nan_dict,
                          wrapped_batch_decode)
