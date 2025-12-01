@@ -28,13 +28,13 @@ from decoupled_utils import (Profiler, barrier, dprint, get_rank, get_world_size
                              is_torch_cuda_available, is_torch_xla_available,
                              print_memory, rprint, save_memory_profile,
                              synchronize_device, try_except, use_dist)
-from unidisc.tokenizers.image_tokenizers import (decode_latents, get_image_batch,
+from medim.tokenizers.image_tokenizers import (decode_latents, get_image_batch,
                                               get_vae, vae_encode_image)
-from unidisc.utils.cuda_utils import sync_times
-from unidisc.utils.xla_utils import shard_output
+from medim.utils.cuda_utils import sync_times
+from medim.utils.xla_utils import shard_output
 from model_utils import (Loss, ddprint, ema_update, empty_device_cache, get_chameleon_txt_indices, get_interleaved_block_mask, log,
                          replace_nan_dict, update_histogram, update_logs, get_block_mask)
-from unidisc.utils.trainer_utils import TrainingState, incremental_dict_update, linear_warmup
+from medim.utils.trainer_utils import TrainingState, incremental_dict_update, linear_warmup
 
 
 class Diffusion:
