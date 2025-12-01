@@ -8,7 +8,7 @@ from functools import cached_property, partial
 from contextlib import ExitStack
 
 from numpy import mask_indices
-from unidisc.utils.tensor_utils import get_contiguous_blocks, get_contiguous_blocks_per_sample, get_interleaved_indices
+from medim.utils.tensor_utils import get_contiguous_blocks, get_contiguous_blocks_per_sample, get_interleaved_indices
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
